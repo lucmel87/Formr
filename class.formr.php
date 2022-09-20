@@ -705,13 +705,15 @@ class Formr
         $return = $classes = null;
         
         // get the css classes (if any)
-        if (preg_match('/class="(.*?)"/', $data['string'], $match) == 1) {
+	$dataString = isset($data['string']) ? $data['string'] : "";
+        if (preg_match('/class="(.*?)"/', $dataString, $match) == 1) {
             $classes = $match[1];
         }
         
         # strip the classes - and class element - and get the rest of the string parameter
         $class_string = 'class="'.$classes.'"';
-        $string = str_replace($class_string, '', $data['string']);
+	$dataString = isset($data['string']) ? $data['string'] : "";
+        $string = str_replace($class_string, '', $dataString);
         
         # add default classes
         if (!empty($this->controls['input']) && !in_array($data['type'], $this->excluded_types)) {
