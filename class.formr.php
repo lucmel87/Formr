@@ -705,7 +705,7 @@ class Formr
         $return = $classes = null;
         
         // get the css classes (if any)
-        if (preg_match('/class="(.*?)"/', $data['string'], $match) == 1) {
+        if (preg_match('/class=["|\'](.*?)["|\']/', $data['string'], $match) == 1) {
             $classes = $match[1];
         }
         
